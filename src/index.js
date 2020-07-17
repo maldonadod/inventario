@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom";
-import main from "./main";
 
 class ReactDOMRenderer {
   render(tree) {
@@ -7,4 +6,4 @@ class ReactDOMRenderer {
   }
 }
 
-main(new ReactDOMRenderer());
+new ReactDOMRenderer().render("hola");
