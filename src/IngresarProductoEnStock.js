@@ -2,8 +2,8 @@ class IngresarProductoEnStock {
   constructor(inventario) {
     this.inventario = inventario;
   }
-  ejecutar(nombreDelProducto) {
-    this.inventario.agregarProducto(nombreDelProducto);
+  async ejecutar(nombreDelProducto) {
+    await this.inventario.agregarProducto(nombreDelProducto);
   }
 }
 

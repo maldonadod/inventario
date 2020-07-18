@@ -1,30 +1,26 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import vista from "./vista";
 
 class InterfazGraficaIngresarProducto {
-  constructor(ingresar) {
-    function handler(nombreDelProducto) {
-      ingresar.ejecutar(nombreDelProducto)
+  constructor(ingresarProducto) {
+    function escribiendo(e) {
+      const contenido = e.target.value;
+      if (contenido === "") {
+        vista.mostrarLimpio(ingresar, escribiendo);
+      } else {
+        vista.mostrarEscribiendo(contenido, ingresar, escribiendo);
+      }
     }
-    ReactDOM.render(
-      <InputInventario
-        handler={handler} />,
-      document.getElementById("input")
-    );
+    async function ingresar(contenido) {
+      try {
+        vista.mostrarEsperando(contenido);
+        await ingresarProducto.ejecutar(contenido)
+        vista.mostrarLimpio(ingresar, escribiendo);
+      } catch (error) {
+        vista.mostrarError(error, contenido, ingresar, escribiendo)
+      }
+    }
+    vista.mostrarLimpio(ingresar, escribiendo);
   }
-}
-
-function InputInventario({ handler }) {
-  const [value, setValue] = React.useState("");
-  function onChange(e) {
-    setValue(e.target.value);
-  }
-  return (
-    <section>
-      <input value={value} onChange={onChange} />
-      <button onClick={() => handler(value)}>Ingresar</button>
-    </section>
-  )
 }
 
 export default InterfazGraficaIngresarProducto;

@@ -2,16 +2,26 @@ import IngresarProductoEnStock from "./IngresarProductoEnStock";
 import Inventario from "./Inventario";
 import Deposito from "./Deposito";
 
+class InterfazGrafica {
+  constructor() {
+    this.inventario = [];
+  }
+  agregarAlInventario(productoNombre) {
+    this.inventario.push(productoNombre);
+  }
+  inventarioContiene(productoNombre) {
+    expect(this.inventario).toContain(productoNombre);
+  }
+}
+
 describe("IngresarProductoEnStock", () => {
-  const interfazGrafica = {
-    agregarAlInventario: jest.fn()
-  };
+  const interfazGrafica = new InterfazGrafica();
   const deposito = new Deposito();
   const inventario = new Inventario(deposito, interfazGrafica);
   const ingresar = new IngresarProductoEnStock(inventario);
-  it("debe guardar pan en el deposito y actualizar el inventario", () => {
-    ingresar.ejecutar("pan");
+  it("debe guardar pan en el deposito y actualizar el inventario", async () => {
+    await ingresar.ejecutar("pan");
 
-    expect(interfazGrafica.agregarAlInventario).toBeCalledWith("pan");
+    interfazGrafica.inventarioContiene("pan")
   })
 })
