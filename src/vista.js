@@ -1,51 +1,64 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const container = document.getElementById("input");
 
 function Escribiendo({ contenido, escribiendo, ingresar }) {
   return (
-    <section>
+    <Container>
       <p>Al terminar de escribir presione <i>Ingresar</i></p>
-      <input autoFocus value={contenido} onChange={escribiendo} />
-      <button onClick={() => ingresar(contenido)}>Ingresar</button>
-    </section>
+      <TextField autoFocus value={contenido} onChange={escribiendo} label="Producto" />
+      <br />
+      <br />
+      <Button onClick={() => ingresar(contenido)} color="primary" variant="contained">Ingresar</Button>
+    </Container>
   )
 }
-function Esperando({ contenido }) {
+function Esperando() {
   return (
-    <section>
-      <p><i>Esperando...</i></p>
-      <input disabled value={contenido} />
-      <button disabled>Ingresar</button>
-    </section>
+    <Container>
+      <CircularProgress />
+    </Container>
   )
 }
-function Limpio({ contenido = "", escribiendo, ingresar }) {
+function Limpio({ escribiendo }) {
   return (
-    <section>
+    <Container>
       <p>Ingrese productos al stock</p>
-      <input autoFocus value={contenido} onChange={escribiendo} />
-      <button disabled onClick={ingresar}>Ingresar</button>
-    </section>
+      <TextField autoFocus onChange={escribiendo} label="Producto" />
+      <br />
+      <br />
+      <Button disabled variant="contained">Ingresar</Button>
+    </Container>
   )
 }
-function Error({ error, contenido, escribiendo, ingresar }) {
+function Error({ error, contenido, escribiendo }) {
   return (
-    <section>
-      <p>{error.message}</p>
-      <input autoFocus value={contenido} onChange={escribiendo} />
-      <button onClick={ingresar}>Ingresar</button>
-    </section>
+    <Container>
+      <TextField
+        autoFocus
+        error
+        helperText={error.message}
+        value={contenido}
+        onChange={escribiendo}
+        label="Producto" />
+      <br />
+      <br />
+      <Button disabled color="primary" variant="contained">Ingresar</Button>
+    </Container>
   )
 }
 
 function mostrar(tree) {
   ReactDOM.render(
-    <section>
+    <Container>
       <h2>Mi stock</h2>
       {tree}
-    </section>
+    </Container>
   , container);
 }
 
