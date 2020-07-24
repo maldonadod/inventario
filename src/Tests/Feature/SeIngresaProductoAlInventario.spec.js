@@ -1,6 +1,6 @@
-import IngresarProductoEnStock from "./IngresarProductoEnStock";
-import Inventario from "./Inventario";
-import Deposito from "./Deposito";
+import IngresarProductoEnStock from "../../Controllers/IngresarProductoEnStock";
+import Inventario from "../../Domain/Inventario";
+import Deposito from "../../Domain/Deposito";
 
 class InterfazGrafica {
   constructor() {

@@ -1,4 +1,4 @@
-import Inventario from "./Inventario";
+import Inventario from "../../Domain/Inventario";
 
 describe("Inventario", () => {
 

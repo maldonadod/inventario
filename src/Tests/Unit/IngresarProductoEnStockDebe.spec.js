@@ -1,4 +1,4 @@
-import IngresarProductoEnStock from "./IngresarProductoEnStock";
+import IngresarProductoEnStock from "../../Controllers/IngresarProductoEnStock";
 
 describe("IngresarProductoEnStock", () => {
   const inventario = {
