@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -11,7 +13,7 @@ function Escribiendo({ contenido, escribiendo, ingresar }) {
   return (
     <Container>
       <p>Al terminar de escribir presione <i>Ingresar</i></p>
-      <TextField autoFocus value={contenido} onChange={escribiendo} label="Producto" />
+      <TextField fullWidth autoFocus value={contenido} onChange={escribiendo} label="Producto" />
       <br />
       <br />
       <Button onClick={() => ingresar(contenido)} color="primary" variant="contained">Ingresar</Button>
@@ -20,16 +22,14 @@ function Escribiendo({ contenido, escribiendo, ingresar }) {
 }
 function Esperando() {
   return (
-    <Container>
-      <CircularProgress />
-    </Container>
+    <CircularProgress />
   )
 }
 function Limpio({ escribiendo }) {
   return (
     <Container>
       <p>Ingrese productos al stock</p>
-      <TextField autoFocus onChange={escribiendo} label="Producto" />
+      <TextField fullWidth autoFocus onChange={escribiendo} label="Producto" />
       <br />
       <br />
       <Button disabled variant="contained">Ingresar</Button>
@@ -39,7 +39,7 @@ function Limpio({ escribiendo }) {
 function Error({ error, contenido, escribiendo }) {
   return (
     <Container>
-      <TextField
+      <TextField fullWidth
         autoFocus
         error
         helperText={error.message}
@@ -55,10 +55,20 @@ function Error({ error, contenido, escribiendo }) {
 
 function mostrar(tree) {
   ReactDOM.render(
-    <Container>
-      <h2>Mi stock</h2>
-      {tree}
-    </Container>
+    <Box width="100%">
+      <Container>
+        <h2>Mi stock</h2>
+      </Container>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        xs={12}
+        sm={6}
+        alignItems="center">
+        {tree}
+      </Grid>
+    </Box>
   , container);
 }
 
