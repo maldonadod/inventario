@@ -1,8 +1,8 @@
-import IngresarProductoEnStock from "./IngresarProductoEnStock";
-import Inventario from "./Inventario";
-import Deposito from "./Deposito";
-import InterfazGraficaInventario from "./InterfazGraficaInventario";
-import InterfazGraficaIngresarProducto from "./InterfazGraficaIngresarProducto";
+import IngresarProductoEnStock from "./Controllers/IngresarProductoEnStock";
+import Inventario from "./Domain/Inventario";
+import Deposito from "./Domain/Deposito";
+import InterfazGraficaInventario from "./UI/InterfazGraficaInventario";
+import InterfazGraficaIngresarProducto from "./UI/InterfazGraficaIngresarProducto";
 
 const interfazGrafica = new InterfazGraficaInventario();
 const deposito = new Deposito();

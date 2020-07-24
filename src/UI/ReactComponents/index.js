@@ -48,7 +48,7 @@ function Error({ error, contenido, escribiendo }) {
   )
 }
 
-module.exports = {
+export {
   Limpio,
   Escribiendo,
   Esperando,
