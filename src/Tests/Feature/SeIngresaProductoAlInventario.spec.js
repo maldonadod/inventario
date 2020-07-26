@@ -1,27 +1,36 @@
-import IngresarProductoEnStock from "../../Controllers/IngresarProductoEnStock";
-import Inventario from "../../Domain/Inventario";
-import Deposito from "../../Domain/Deposito";
+import IngresarProductoAOrdenDeCompra from "../../Controllers/IngresarProductoAOrdenDeCompra"
 
 class InterfazGrafica {
   constructor() {
-    this.productos = null;
+    this.productosDeLaOrdenDeCompra = [];
   }
-  mostrarProductos(productos) {
-    this.productos = productos;
+  mostrarOrdenDeCompra(ordenDeCompra) {
+    this.productosDeLaOrdenDeCompra = ordenDeCompra.productos;
   }
-  inventarioContiene(productoNombre) {
-    expect(this.productos).toContain(productoNombre);
+  haMostradoEnOrdenDeCompra(nombreProducto) {
+    expect(this.productosDeLaOrdenDeCompra).toContain(nombreProducto);
+  }
+}
+class Orden {
+  constructor(interfaz) {
+    this.interfazGrafica = interfaz;
+    this.productos = [];
+  }
+  agregarProducto(nombreProducto) {
+    this.productos.push(nombreProducto);
+    this.interfazGrafica.mostrarOrdenDeCompra(this);
   }
 }
 
-describe("IngresarProductoEnStock", () => {
-  const interfazGrafica = new InterfazGrafica();
-  const deposito = new Deposito();
-  const inventario = new Inventario(deposito, interfazGrafica);
-  const ingresar = new IngresarProductoEnStock(inventario);
-  it("debe guardar pan en el deposito y actualizar el inventario", async () => {
-    await ingresar.ejecutar("pan");
+describe("IngresarProductoAOrdenDeCompra", () => {
+  const interfaz = new InterfazGrafica();
+  const ingresar = new IngresarProductoAOrdenDeCompra(new Orden(interfaz));
+  it("debe mostrar el producto en la orden de compra", () => {
+    const req = {
+      nombre: "pan"
+    }
+    ingresar.ejecutar(req);
 
-    interfazGrafica.inventarioContiene("pan")
+    interfaz.haMostradoEnOrdenDeCompra("pan")
   })
 })

@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 
 const container = document.getElementById("root");
 
-class InterfazGrafica {
-  mostrarProductos(productos) {
+class InterfazOrdenDeCompra {
+  mostrarOrdenDeCompra(ordenDeCompra) {
     ReactDOM.render(
-      <MiInventario productos={productos} />,
+      <MiInventario productos={ordenDeCompra.productos} />,
       container
     );
   }
@@ -19,4 +19,4 @@ function MiInventario({ productos }) {
   )
 }
 
-export default InterfazGrafica;
+export default InterfazOrdenDeCompra;

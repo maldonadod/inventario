@@ -13,7 +13,10 @@ class InterfazGraficaIngresarProducto {
     async function ingresar(contenido) {
       try {
         vista.mostrarEsperando(contenido);
-        await ingresarProducto.ejecutar(contenido)
+        const peticion = {
+          nombre: contenido
+        }
+        await ingresarProducto.ejecutar(peticion);
         vista.mostrarLimpio(ingresar, escribiendo);
       } catch (error) {
         vista.mostrarError(error, contenido, ingresar, escribiendo)
