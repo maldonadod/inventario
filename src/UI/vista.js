@@ -22,8 +22,6 @@ function mostrar(tree) {
         container
         direction="row"
         justify="center"
-        xs={12}
-        sm={6}
         alignItems="center">
         {tree}
       </Grid>

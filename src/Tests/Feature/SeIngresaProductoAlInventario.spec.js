@@ -4,13 +4,13 @@ import Deposito from "../../Domain/Deposito";
 
 class InterfazGrafica {
   constructor() {
-    this.inventario = [];
+    this.productos = null;
   }
-  agregarAlInventario(productoNombre) {
-    this.inventario.push(productoNombre);
+  mostrarProductos(productos) {
+    this.productos = productos;
   }
   inventarioContiene(productoNombre) {
-    expect(this.inventario).toContain(productoNombre);
+    expect(this.productos).toContain(productoNombre);
   }
 }
 

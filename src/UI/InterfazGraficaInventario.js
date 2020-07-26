@@ -1,15 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+const container = document.getElementById("root");
+
 class InterfazGrafica {
-  constructor() {
-    this.lista = [];
-  }
-  agregarAlInventario(nombreDelProducto) {
-    this.lista.push(nombreDelProducto);
-    const container = document.getElementById("root");
+  mostrarProductos(productos) {
     ReactDOM.render(
-      <MiInventario productos={this.lista} />,
+      <MiInventario productos={productos} />,
       container
     );
   }

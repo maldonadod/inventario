@@ -5,7 +5,11 @@ class Inventario {
   }
   async agregarProducto(nombreDelProducto) {
     await this.deposito.guardar(nombreDelProducto)
-    this.interfazGrafica.agregarAlInventario(nombreDelProducto);
+    this.presentarInventario();
+  }
+  async presentarInventario() {
+    const productos = await this.deposito.obtenerTodos();
+    this.interfazGrafica.mostrarProductos(productos);
   }
 }
 

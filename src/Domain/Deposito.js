@@ -1,10 +1,17 @@
-class Deposito {
+const CLAVE = "deposito"
+
+class LocalStorageDeposito {
   async guardar(nombreProducto) {
-    await new Promise(r => setTimeout(r, 1000))
-    if (nombreProducto === "asd") {
-      return Promise.reject(new Error("Ocurrio un error!"))
-    }
+    const productosString = localStorage.getItem(CLAVE);
+    const productos = productosString ? JSON.parse(productosString) : [];
+    const productosActualizados = [...productos, nombreProducto];
+    localStorage.setItem(CLAVE, JSON.stringify(productosActualizados))
+  }
+  obtenerTodos() {
+    const productosString = localStorage.getItem(CLAVE);
+    const productos = productosString ? JSON.parse(productosString) : [];
+    return productos;
   }
 }
 
-export default Deposito;
+export default LocalStorageDeposito;

@@ -10,3 +10,5 @@ const inventario = new Inventario(deposito, interfazGrafica);
 const ingresar = new IngresarProductoEnStock(inventario);
 
 new InterfazGraficaIngresarProducto(ingresar);
+
+inventario.presentarInventario();
