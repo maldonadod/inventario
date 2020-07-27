@@ -1,4 +1,5 @@
 import IngresarProductoAOrdenDeCompra from "../../Controllers/IngresarProductoAOrdenDeCompra"
+import Orden from "../../Domain/Orden"
 
 class InterfazGrafica {
   constructor() {
@@ -11,20 +12,23 @@ class InterfazGrafica {
     expect(this.productosDeLaOrdenDeCompra).toContain(nombreProducto);
   }
 }
-class Orden {
-  constructor(interfaz) {
-    this.interfazGrafica = interfaz;
-    this.productos = [];
+class RepositorioFake {
+  constructor() {
+    this.productos = []
   }
-  agregarProducto(nombreProducto) {
-    this.productos.push(nombreProducto);
-    this.interfazGrafica.mostrarOrdenDeCompra(this);
+  observar(observador) {
+    observador.ejecutar(this.productos);
+  }
+  agregar(n) {
+    this.productos.push(n);
   }
 }
 
 describe("IngresarProductoAOrdenDeCompra", () => {
+  const repositorio = new RepositorioFake()
   const interfaz = new InterfazGrafica();
-  const ingresar = new IngresarProductoAOrdenDeCompra(new Orden(interfaz));
+  const orden = new Orden(repositorio, interfaz);
+  const ingresar = new IngresarProductoAOrdenDeCompra(orden);
   it("debe mostrar el producto en la orden de compra", () => {
     const req = {
       nombre: "pan"

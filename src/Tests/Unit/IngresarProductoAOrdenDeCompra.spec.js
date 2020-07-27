@@ -12,5 +12,5 @@ describe("IngresarProductoAOrdenDeCompra", () => {
     ingresar.ejecutar(peticion);
 
     expect(orden.agregarProducto).toBeCalledWith("pan");
-  })  
+  })
 })

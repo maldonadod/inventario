@@ -8,7 +8,7 @@ import {
   Escribiendo,
   Esperando,
   Error
-} from "./ReactComponents";
+} from "./Componentes";
 
 const container = document.getElementById("input");
 
