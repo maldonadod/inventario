@@ -23,7 +23,7 @@ function Esperando() {
 function Limpio({ escribiendo }) {
   return (
     <Container>
-      <p>Ingrese productos al stock</p>
+      <p>Ingrese productos a la orden de compra</p>
       <TextField fullWidth autoFocus onChange={escribiendo} label="Producto" />
       <br />
       <br />
@@ -34,7 +34,8 @@ function Limpio({ escribiendo }) {
 function Error({ error, contenido, escribiendo }) {
   return (
     <Container>
-      <TextField fullWidth
+      <TextField
+        fullWidth
         autoFocus
         error
         helperText={error.message}

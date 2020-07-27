@@ -31,7 +31,7 @@ class Orden {
       .ref("productos")
       .on("value", (snapshot) => {
         const productos = snapshot.val();
-        this.productos = productos;
+        this.productos = Object.values(productos);
         this.interfazGrafica.mostrarOrdenDeCompra(this);
       })
   }
@@ -39,7 +39,8 @@ class Orden {
     firebase
       .database()
       .ref("productos")
-      .set([...this.productos, nombreProducto])
+      .push()
+      .set(nombreProducto)
   }
 }
 

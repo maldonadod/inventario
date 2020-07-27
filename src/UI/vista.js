@@ -16,7 +16,7 @@ function mostrar(tree) {
   ReactDOM.render(
     <Box width="100%">
       <Container>
-        <h2>Mi stock</h2>
+        <h2>Orden de compra</h2>
       </Container>
       <Grid
         container
