@@ -23,7 +23,7 @@ function Esperando() {
 function Limpio({ escribiendo }) {
   return (
     <Container>
-      <p>Ingrese productos a la orden de compra</p>
+      <p>Ingrese productos para comprar</p>
       <TextField fullWidth autoFocus onChange={escribiendo} label="Producto" />
       <br />
       <br />

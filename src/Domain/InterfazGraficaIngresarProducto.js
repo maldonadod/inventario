@@ -17,7 +17,7 @@ class InterfazGraficaIngresarProducto {
           nombre: contenido
         }
         await ingresarProducto.ejecutar(peticion);
-        VistasDeIngresarProducto.mostrarLimpio(ingresar, escribiendo);
+        VistasDeIngresarProducto.mostrarLimpioConExito(ingresar, escribiendo);
       } catch (error) {
         VistasDeIngresarProducto.mostrarError(error, contenido, ingresar, escribiendo)
       }

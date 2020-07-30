@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import {
   Limpio,
   Escribiendo,
@@ -15,15 +17,12 @@ const container = document.getElementById("input");
 function mostrar(tree) {
   ReactDOM.render(
     <Box width="100%">
-      <Container>
-        <h2>Orden de compra</h2>
-      </Container>
       <Grid
         container
         direction="row"
         justify="center"
         alignItems="center">
-        {tree}
+        <Container>{tree}</Container>
       </Grid>
     </Box>
   , container);
@@ -35,6 +34,20 @@ const vista = {
       <Limpio
         ingresar={ingresar}
         escribiendo={escribiendo} />
+    )
+  },
+  mostrarLimpioConExito(ingresar, escribiendo) {
+    mostrar(
+      <div>
+         <Snackbar open>
+          <MuiAlert severity="success" elevation={6} variant="filled">
+            Agregado!
+          </MuiAlert>
+        </Snackbar>
+        <Limpio
+          ingresar={ingresar}
+          escribiendo={escribiendo} />
+      </div>
     )
   },
   mostrarEscribiendo(contenido, ingresar, escribiendo) {
