@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import {
+  Inactivo,
   Limpio,
   Escribiendo,
   Esperando,
@@ -44,8 +45,7 @@ const vista = {
             Agregado!
           </MuiAlert>
         </Snackbar>
-        <Limpio
-          ingresar={ingresar}
+        <Inactivo
           escribiendo={escribiendo} />
       </div>
     )

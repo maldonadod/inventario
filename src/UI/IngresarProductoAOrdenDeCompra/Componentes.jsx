@@ -31,6 +31,17 @@ function Limpio({ escribiendo }) {
     </Container>
   )
 }
+function Inactivo({ escribiendo }) {
+  return (
+    <Container>
+      <p>Ingrese productos para comprar</p>
+      <TextField fullWidth onChange={escribiendo} label="Producto" />
+      <br />
+      <br />
+      <Button disabled variant="contained">Ingresar</Button>
+    </Container>
+  )
+}
 function Error({ error, contenido, escribiendo }) {
   return (
     <Container>
@@ -53,5 +64,6 @@ export {
   Limpio,
   Escribiendo,
   Esperando,
+  Inactivo,
   Error
 }
